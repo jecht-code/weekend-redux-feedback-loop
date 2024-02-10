@@ -1,20 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Understandingtoday() {
     let [understandToAdd, setunderstandToAdd] = useState('');
     const dispatch = useDispatch();
+    const history =useHistory();
     
     const handleUnderstanding = (event) => {
         event.preventDefault();
         dispatch({
-            type: 'FEELINGTODAY',
-            payload: {
-                feeling: understandToAdd,
-              },
+            type: 'UNDERSTANDINGTODAY',
+            payload: understandToAdd
         });
-        setunderstandToAdd('');
+        
+        history.push('/supported');
     }
 
     const handleChangeUnderstanding = (event) => {
@@ -26,10 +27,14 @@ function Understandingtoday() {
         
         <h2>How well are you understanding the content?</h2>
         <p>Understanding?</p>
-        <form onSubmit={handleUnderstanding} >
-            <input onChange={handleChangeUnderstanding} value={understandToAdd} type="number" min="1" max="5" />
-            <button data-testid="next">Next</button>
-        </form>
+        
+        <input 
+        data-testid="input"
+        onChange={handleChangeUnderstanding} 
+        value={understandToAdd} 
+        type="number" min="1" max="5" />
+        <button data-testid="next" onClick={handleUnderstanding}>Next</button>
+        
 
       </div>
     );

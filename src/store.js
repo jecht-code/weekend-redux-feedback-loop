@@ -15,12 +15,28 @@ function understandingValue(state = 5, action) {
       return state = action.payload;
     }
     return state;
-  }
+}
+
+function supportedValue(state = 5, action) {
+    if (action.type === 'SUPPORTEDTODAY') {  
+        return state = action.payload;
+    }
+    return state;
+}
+
+function commentedValue(state = '', action) {
+    if (action.type === 'COMMENTEDTODAY') {  
+        return state = action.payload;
+    }
+    return state;
+}
 
 export const store = () => createStore(
     combineReducers({
         feelingValue,
         understandingValue,
+        supportedValue,
+        commentedValue
     }),
     applyMiddleware(logger)
   );
