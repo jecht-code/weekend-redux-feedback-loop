@@ -14,7 +14,6 @@ function Youfeelingtoday() {
             type: 'FEELINGTODAY',
             payload: feelingToAdd,
         });
-        
         history.push('/understanding');
     }
 

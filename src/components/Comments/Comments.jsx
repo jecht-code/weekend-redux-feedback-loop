@@ -14,7 +14,7 @@ function Commenttoday() {
             type: 'COMMENTEDTODAY',
             payload: commentToAdd
         });
-        history.push('/understanding');
+        history.push('/reviewfeedback');
     }
 
     const handleChangeComment = (event) => {

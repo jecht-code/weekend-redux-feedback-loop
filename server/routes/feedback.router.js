@@ -7,9 +7,9 @@ const pool = require('../modules/pool')
 router.post('/', (req, res) => {
     console.log('POST feedback', req.body)
     const sqlText = `INSERT INTO "feedback" 
-        ("feedback", "understanding", "support", "comments")
+        ("feeling", "understanding", "support", "comments")
         VALUES ($1, $2, $3, $4);`;
-    const sqlValues = [req.body.feedback, req.body.understanding, req.body.support, req.body.comments];
+    const sqlValues = [req.body.feeling, req.body.understanding, req.body.support, req.body.comments];
 
     pool
     .query(sqlText, sqlValues)
@@ -17,6 +17,7 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
     })
     .catch((err) => {
+        console.log(err);
         res.sendStatus(500);
     });
 });
