@@ -7,6 +7,7 @@ import Understandingtoday from '../UnderstandingContent/UnderstandingContent';
 import Supportedtoday from '../Supported/Supported';
 import Commenttoday from '../Comments/Comments';
 import Reviewfeedback from '../ReviewFeedback/ReviewFeedback';
+import Thankyounext from '../Thankyou/Thankyou';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route  path="/reviewfeedback" exact>
           <Reviewfeedback />
+        </Route>
+        <Route  path="/thankyou" exact>
+          <Thankyounext />
         </Route>
       </HashRouter>
     </div>

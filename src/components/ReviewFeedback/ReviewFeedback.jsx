@@ -1,18 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function Reviewfeedback() {
-    const reviewFeedback = useSelector((state) => state.feelingValue)
-    const reviewUnderstand = useSelector((state) => state.understandingValue)
-    const reviewSupport = useSelector((state) => state.supportedValue)
-    const reviewComment = useSelector((state) => state.commentedValue)
+    const reviewFeedback = useSelector((state) => state.feelingValue);
+    const reviewUnderstand = useSelector((state) => state.understandingValue);
+    const reviewSupport = useSelector((state) => state.supportedValue);
+    const reviewComment = useSelector((state) => state.commentedValue);
+    const history =useHistory();
 
     const handleAlldata = (event) => {
         event.preventDefault();
         console.log(`Add data:`, {feeling: reviewFeedback, understanding: reviewUnderstand, support: reviewSupport, comments: reviewComment});
-        
+
         axios.post('/api/feedback', {feeling: reviewFeedback, understanding: reviewUnderstand, support: reviewSupport, comments: reviewComment})
         .then((response) => {
             //GET to refresh - but dont need to refresh here
@@ -20,7 +22,7 @@ function Reviewfeedback() {
         .catch((error) => {
             console.log('ERROR:', error);
         });
-        //history.push('/comment');
+        history.push('/thankyou');
     }
 
     return (
